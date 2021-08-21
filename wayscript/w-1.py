@@ -19,18 +19,21 @@ usr = ''.join(secrets.choice(string.ascii_lowercase)
                                                   for i in range(N))
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
+options.add_argument('--log-level=1') #low level logging (clean terminal)
+#general bypass
 options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36")
 options.add_experimental_option ('excludeSwitches', ['enable-logging'])
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
-options.add_experimental_option('useAutomationExtension', False)
+#cloudflare bypass
+options.add_experimental_option('useAutomationExtension', False) 
 options.add_argument("--disable-blink-features=AutomationControlled")
 w = webdriver.Chrome('D:\\Users\Stephen\Dev\Git\Python\chromedriver.exe',options=options)
 
-
+#............TBD: Randomize ............
 #temp variables
-cpm = 'waysxrips'
-fsnm = 'ksadhjlkj'
-lsnm = 'jdsxknfskd'
+cpm = 'waysxrips' #company name
+fsnm = 'ksadhjlkj' #first name
+lsnm = 'jdsxknfskd' #last name
 
 
 def temp_mail():
@@ -38,16 +41,15 @@ def temp_mail():
     global t1
     t1=w.current_window_handle
     global email, password
-    
     time.sleep(5)
     email = w.find_element_by_xpath('//*[@id="mail"]').get_attribute('value')
     password = "qwerty123"
-    print (email,' ',password)
+    print (email,password)
     w.execute_script("window.open('about:blank','secondtab');")
     w.switch_to.window("secondtab")
 
 def wayscript():
-
+#wayscript account creation
     w.get('https://wayscript.com/')
     w.find_element_by_xpath('//*[@id="marketing_scroll"]/div[1]/div[1]/div/a').click()
     w.find_element_by_xpath('//*[@id="username"]').send_keys(usr)
@@ -67,9 +69,9 @@ def wayscript():
     w.find_element_by_xpath('//*[@id="referral"]/option[4]').click()
     w.find_element_by_xpath('//*[@id="submit_button"]').click()
     w.switch_to.window(t1)
-    time.sleep(10)
+#wayscript verify
+    time.sleep(5)
     w.find_element_by_partial_link_text('Welcome. Please confirm your email address.').click()
-    #w.find_element_by_xpath('//*[@id="tm-body"]/main/div[1]/div/div[2]/div[2]/div/div[1]/div/div[4]/ul/li[2]/div[3]/div[2]/a').click()
     time.sleep(3)
     w.find_element_by_xpath('//*[@id="tm-body"]/main/div[1]/div/div[2]/div[2]/div/div[1]/div/div[2]/div[3]/table/tbody/tr/td/table/tbody/tr[2]/td/a[1]/button').click()
 
