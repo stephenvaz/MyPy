@@ -9,7 +9,7 @@ import string
 
 options = webdriver.ChromeOptions()
 
-options.add_argument('--headless')
+#options.add_argument('--headless')
 options.add_argument("--window-size=1920,1080")
 
 options.add_argument('--log-level=1')
@@ -57,7 +57,7 @@ elif pcode_suff >= 10 & pcode_suff < 100:
     pcode_suff = '0' + str(pcode_suff) 
 else :
     pcode_suff = str(pcode_suff)
-    
+pcode = '400' + pcode_suff
 phone = sG.randint(8000000000,9000000000)
 def temp_mail():
     b.get('https://temp-mail.org/en/')
@@ -82,7 +82,7 @@ def card(): #checker not working
 
 def cc_check():
     global card_no, exp, cvv
-    time.sleep(3)
+    time.sleep(8)
     b.get('https://www.mrchecker.net/card-checker/ccn2/')
     b.find_element_by_xpath('//*[@id="cc"]').send_keys(cards)
     b.find_element_by_xpath('//*[@id="form"]/div[2]/div/button[1]').click()
