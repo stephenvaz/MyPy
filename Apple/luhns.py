@@ -2,14 +2,15 @@
 
 card = '4417123456789113'
 n = 0
-while n <= 16:
+while n <= 15:
     dub = 2*int(card[n])
     if dub >= 10:
         dub = str(dub)
         dub = int(dub[0]) + int(dub[1])
     n = n + 2
-    print(dub)
-#s1 = 2*int(card[n]) 
+    print(dub) #done
+#s1 = 2*int(card[n])
+card[0:1]
 
 
 
