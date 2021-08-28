@@ -1,15 +1,30 @@
 #luhns algo
 
-card = '4417123456789113'
-n = 0
-while n <= 16:
-    dub = 2*int(card[n])
-    if dub >= 10:
-        dub = str(dub)
-        dub = int(dub[0]) + int(dub[1])
-    n = n + 2
-    print(dub)
-#s1 = 2*int(card[n]) 
+card = input('Card no.')
+n1 = 0
+n2 = 1
+total = 0
+Cards =[]
+while n1 <= 15:
+    dub1 = 2*int(card[n1])
+    if dub1 >= 10 :
+        dub1 = str(dub1)
+        dub1 = int(dub1[0]) + int(dub1[1])
+    dub2 = int(card[n2])
+    Cards.append(dub1)
+    Cards.append(dub2)
+    n1 = n1 + 2
+    n2 = n2 + 2
+for elem in range (0,len(Cards)) :
+    total = total + Cards[elem]
+
+print(card)
+if total%10 == 0 :
+    print('Live Card')
+else :
+    print('Dead Card')
+
+
 
 
 
